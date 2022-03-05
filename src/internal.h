@@ -567,6 +567,8 @@ struct _GLFWwindow
         GLFWcursorposfun          cursorPos;
         GLFWcursorenterfun        cursorEnter;
         GLFWscrollfun             scroll;
+		GLFWzoomfun               zoom;
+		GLFWrotatefun			  rotate;
         GLFWkeyfun                key;
         GLFWcharfun               character;
         GLFWcharmodsfun           charmods;
@@ -921,6 +923,13 @@ void _glfwInputKey(_GLFWwindow* window,
 void _glfwInputChar(_GLFWwindow* window,
                     uint32_t codepoint, int mods, GLFWbool plain);
 void _glfwInputScroll(_GLFWwindow* window, double xoffset, double yoffset);
+/*! @brief Notifies shared code of a zoom event.
+  *  @param[in] window The window that received the event.
+  *  @param[in] z the change of zoom level.
+  *  @ingroup event
+  */
+void _glfwInputZoom(_GLFWwindow* window, double z);
+void _glfwInputRotate(_GLFWwindow* window, double r);
 void _glfwInputMouseClick(_GLFWwindow* window, int button, int action, int mods);
 void _glfwInputCursorPos(_GLFWwindow* window, double xpos, double ypos);
 void _glfwInputCursorEnter(_GLFWwindow* window, GLFWbool entered);
