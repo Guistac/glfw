@@ -32,6 +32,8 @@
 // Needed for _NSGetProgname
 #include <crt_externs.h>
 
+#include <Cocoa/Cocoa.h>
+
 // Change to our application bundle's resources directory, if present
 //
 static void changeToResourcesDirectory(void)
@@ -446,6 +448,24 @@ static GLFWbool initializeTIS(void)
     for (int i = 0;  i < _glfw.monitorCount;  i++)
         _glfwRestoreVideoModeCocoa(_glfw.monitors[i]);
 }
+
+//============================================================================
+//============================== CUSTOM MODS =================================
+//============================================================================
+
+- (bool)application:(NSApplication*)sender
+		   openFile:(nonnull NSString *)filename
+{
+	//convert NSString* to const char* and copy to string buffer
+	const char* filePath = [filename UTF8String];
+	strcpy(GLFWopenedFilePath, filePath);
+	if(openfileCallback) openfileCallback(GLFWopenedFilePath);
+	return true;
+}
+
+//============================================================================
+//============================================================================
+//============================================================================
 
 @end // GLFWApplicationDelegate
 

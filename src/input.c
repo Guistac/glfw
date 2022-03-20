@@ -948,6 +948,10 @@ GLFWAPI GLFWscrollfun glfwSetScrollCallback(GLFWwindow* handle,
     return cbfun;
 }
 
+//============================================================================
+//============================== CUSTOM MODS =================================
+//============================================================================
+
 GLFWAPI GLFWzoomfun glfwSetZoomCallback(GLFWwindow* handle,
 										GLFWzoomfun cbfun)
 {
@@ -965,6 +969,10 @@ GLFWAPI GLFWrotatefun glfwSetRotateCallback(GLFWwindow* handle,
 	_GLFW_SWAP(GLFWrotatefun, window->callbacks.rotate, cbfun);
 	return cbfun;
 }
+
+//============================================================================
+//============================================================================
+//============================================================================
 
 GLFWAPI GLFWdropfun glfwSetDropCallback(GLFWwindow* handle, GLFWdropfun cbfun)
 {

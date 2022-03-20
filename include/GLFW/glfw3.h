@@ -1804,20 +1804,21 @@ typedef void (* GLFWcursorenterfun)(GLFWwindow* window, int entered);
  */
 typedef void (* GLFWscrollfun)(GLFWwindow* window, double xoffset, double yoffset);
 
-/*! @brief The function signature for zoom callbacks.
-  *
-  *  This is the function signature for zoom callback functions.
-  *
-  *  @param[in] window The window that received the event.
-  *  @param[in] zoom The zoom offset.
-  *
-  *  @sa glfwSetZoomCallback
-  *
-  *  @ingroup input
-  */
+//============================================================================
+//============================== CUSTOM MODS =================================
+//============================================================================
+
 typedef void (* GLFWzoomfun)(GLFWwindow*,double);
 
 typedef void (* GLFWrotatefun)(GLFWwindow*, double);
+
+typedef void (* GLFWopenfilefun)(const char*);
+
+const char* glfwGetOpenedFilePath();
+
+//============================================================================
+//============================================================================
+//============================================================================
 
 /*! @brief The function pointer type for keyboard key callbacks.
  *
@@ -2424,6 +2425,8 @@ GLFWAPI int glfwGetError(const char** description);
  *  @ingroup init
  */
 GLFWAPI GLFWerrorfun glfwSetErrorCallback(GLFWerrorfun callback);
+
+GLFWAPI GLFWopenfilefun glfwSetOpenFileCallback(GLFWopenfilefun cbfun);
 
 /*! @brief Returns the currently selected platform.
  *

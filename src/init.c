@@ -480,3 +480,25 @@ GLFWAPI GLFWerrorfun glfwSetErrorCallback(GLFWerrorfun cbfun)
     return cbfun;
 }
 
+//============================================================================
+//============================== CUSTOM MODS =================================
+//============================================================================
+
+GLFWAPI GLFWopenfilefun glfwSetOpenFileCallback(GLFWopenfilefun cbfun)
+{
+	_GLFW_SWAP(GLFWopenfilefun, openfileCallback, cbfun);
+	return cbfun;
+}
+
+GLFWopenfilefun openfileCallback = NULL;
+
+char GLFWopenedFilePath[512] = {0};
+
+const char* glfwGetOpenedFilePath(){
+	if(GLFWopenedFilePath[0] == 0) return NULL;
+	return GLFWopenedFilePath;
+}
+
+//============================================================================
+//============================================================================
+//============================================================================
